@@ -1,0 +1,103 @@
+ATIVIDADE POO
+
+
+
+
+
+1 - Classe -> é uma especificação para um conjunto de objetos(características e comportamentos). Ela define os atributos e métodos que os objetos terão, descrevendo-os e o que poderão fazer, é uma abstração de comportamento e estado que os objetos compartilham.
+
+Objeto -> é a representação(intância) concreta de uma classe. Os objetos são criados a partir da classe e possui seus próprios atributos e métodos pertencentes a classe.
+
+2 - Atributos -> são caratcterísticas que definem o estado de um objeto, são os dados específicos associados ao objeto e o descrevem.
+
+Métodos -> são as ações que o objeto pode realizar, são os comportamentos que os permitem executar instruções pertencentes a classe.
+
+public class teste{
+    public static void main(String[] args){
+        Pessoa pessoa1 = new Pessoa("Alice", 28);
+        pessoa1.exibirInfo(); // Chama o método exibirInfo para mostrar informações sobre a pessoa
+        
+    }
+}
+
+class Pessoa {
+    // Atributos
+    String nome;
+    int idade;
+
+    // Método construtor
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    // Método para exibir informações da pessoa
+    public void exibirInfo() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade);
+    }
+}
+
+
+3 - 
+Atributo 				Sistema em que é importante
+					
+Peso					Sistema que avalia os graus de peso, visando analisar a obesidade
+Tipo de CNH				Sistema que genrencia a CNH, para identidade e nível do CNH
+Tipo Sanguíneo				SIstema que gerencia os tipos sanguíneos, para obter tipagem e averiguar doenças
+Habilidade destra			Sistema que avalia grau de desenvolvimento da mão direita para certas atividades 
+Percentual de gordura			Sistema que usa o percentual de gordura para averiguar sua condição física, visando melhorar a saúde por meio de uma dieta
+Saldo em conta				Sistema que gerencia contas, saldos, extratos, depositos, etc.
+Etinia					Sistema que analisa um censo de acordo com a etinia
+
+4 - a) Sim
+b)  Sim, avaliando que uma pessoa pode ter mais de uma conta, por exemplo conta corrente e conta poupança.
+
+
+5 - Professor, relatorios, simulados, servidor, disciplinas
+
+6 - Um jogo de corrida, onde existe uma classe Carro, com atributos como: velocidade, aceleração, cor, modelo, tamanho, tipo, etc e métodos como: acelerar(), mudar_direção(), buzinar(), freiar(), etc. 
+
+7 - 
+
+public class retangulo {
+    public static void main(String[] args) {
+        Retangulo ret1 = new Retangulo(10, 20);
+        ret1.exibir();
+
+    }
+    
+}
+
+class Retangulo {
+    double lado1;
+    double lado2;
+
+    public Retangulo(double lado1, double lado2) {
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+    }
+
+    double calcularArea() {
+        return lado1 * lado2;
+    }
+
+    double calcularPerimetro() {
+        return 2 * (lado1 + lado2);
+    }
+
+    public void exibir() {
+        System.out.println("Resultado da área: " + calcularArea());
+        System.out.println("O resultado do perímetro: " + calcularPerimetro());
+    }
+
+}
+
+
+
+
+
+
+
+
+
