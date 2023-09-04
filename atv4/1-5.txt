@@ -1,0 +1,237 @@
+questao1
+V
+V
+F
+F
+V
+V
+V
+
+questao2
+
+class Hotel {
+quantReservas : number;
+adicionarReserva() : void {
+quantReservas++;
+}
+}
+
+o erro está na tentativa de acessar e incrementar a variável dentro do método,
+pois a variável é uma instancia da classe e para acessá-la deve-se primeiro,
+inicializá-la no construtor ou atribuir um valor.
+
+class Hotel {
+    quantReservas : number = 12;
+    adicionarReserva() : void {
+        this.quantReservas++;
+    }
+}
+
+questao3
+
+class Hotel {
+  quantReservas: number;
+
+  constructor(quantReservas: number) {
+    this.quantReservas = quantReservas; 
+  }
+
+  adicionarReserva(): void {
+    this.quantReservas++;
+  }
+}
+
+let hotel: Hotel = new Hotel(2); 
+console.log(hotel.quantReservas); 
+
+questao4
+
+A classe exige parametro, mas na hora de instanciar o objeto não é fornecido
+
+class Radio {
+  volume: number;
+
+  constructor(volume: number) {
+    this.volume = volume;
+  }
+}
+
+let r: Radio = new Radio(10); 
+console.log(r.volume);
+
+questao5
+
+class Conta {
+numero: String;
+saldo: number;
+
+constructor(numero: String, saldo: number) {
+    this.numero = numero
+    this.saldo = saldo
+}
+
+sacar(valor: number): void {
+this.saldo = this.saldo - valor;
+}
+
+depositar(valor: number): void {
+this.saldo = this.saldo + valor;
+}
+
+consultarSaldo(): number {
+return this.saldo;
+}
+
+transferir(contaDestino: Conta, valor: number): void {
+this.sacar(valor);
+contaDestino.depositar(valor);
+}
+
+}
+
+let c1: Conta = new Conta("1",100);
+let c2: Conta = new Conta("2",100);
+let c3: Conta;
+c1 = c2; 
+c3 = c1; 
+c1.sacar(10); 
+c1.transferir(c2,50);
+console.log(c1.consultarSaldo());//90
+console.log(c2.consultarSaldo());//90
+console.log(c3.consultarSaldo());//90
+
+a)
+40
+150
+40
+
+b) não possui mais referencia nenhuma a ele
+
+questao6
+
+public class saudacao {
+    public static void main(String[] args) {
+        Saudacao saud1 = new Saudacao("olá", "Ryan");
+        String mensagem = saud1.obterSaldacao();
+        System.out.println(mensagem);
+    }
+}
+
+class Saudacao {
+    String texto;
+    String destinatario;
+
+        public Saudacao(String texto, String destinatario) {
+            this.texto = texto;
+            this.destinatario = destinatario;
+        }
+
+        public String obterSaldacao() {
+            return texto + "," + destinatario;
+        }
+
+}
+
+
+questao7
+
+public class Teste {
+    public static void main(String[] args) {
+        Triangulo triangulo1 = new Triangulo(3, 4, 5);
+        Triangulo triangulo2 = new Triangulo(2, 2, 2);
+        Triangulo triangulo3 = new Triangulo(5, 7, 10);
+
+        System.out.println("Triângulo 1: " + "Forma Triângulo: " + triangulo1.verificarTriangulo() + ", Isósceles: " + triangulo1.Ehisoceles() + ", Equilátero: " + triangulo1.Ehequilatero() + ", Escaleno: " + triangulo1.Ehescaleno());
+        System.out.println("Triângulo 2: " + "Forma Triângulo: " + triangulo2.verificarTriangulo() + ", Isósceles: " + triangulo2.Ehisoceles() + ", Equilátero: " + triangulo2.Ehequilatero() + ", Escaleno: " + triangulo2.Ehescaleno());
+        System.out.println("Triângulo 3: " + "Forma Triângulo: " + triangulo3.verificarTriangulo() + ", Isósceles: " + triangulo3.Ehisoceles() + ", Equilátero: " + triangulo3.Ehequilatero() + ", Escaleno: " + triangulo3.Ehescaleno());
+    }
+}
+
+class Triangulo {
+    private double lado1;
+    private double lado2;
+    private double lado3;
+
+    public Triangulo(double lado1, double lado2, double lado3) {
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+        this.lado3 = lado3;
+    }
+
+    public boolean verificarTriangulo() {
+        //regra: |b-c| < a < b+c;
+        if (Math.abs(lado2 - lado3) < lado1 && lado1 < (lado2 + lado3)) {
+            return true;
+        }
+        return false; 
+    }
+
+    public boolean Ehisoceles() {
+        if (!verificarTriangulo()) {}
+        return (lado1 == lado2) || (lado1 == lado3) || (lado2 == lado3);
+    }
+
+    public boolean Ehequilatero() {
+        if (!verificarTriangulo()) {}
+        return (lado1 == lado2) && (lado1 == lado3) && (lado2 == lado3);
+    }
+
+    public boolean Ehescaleno() {
+        if (!verificarTriangulo()) {}
+        return (lado1 != lado2) && (lado1 != lado3) && (lado2 != lado3);
+    }
+}
+
+questao8
+
+public class Teste {
+    public static void main(String[] args) {
+        Equipamento equipamento = new Equipamento();
+        
+        equipamento.liga();
+        equipamento.liga();
+        System.out.println(equipamento.estaLigado());
+        equipamento.desliga();
+        System.out.println(equipamento.estaLigado());
+        equipamento.desliga();
+        System.out.println(equipamento.estaLigado());
+        equipamento.inverte();
+        System.out.println(equipamento.estaLigado());
+    }
+}
+
+class Equipamento {
+    private boolean ligado;
+
+    public Equipamento() {
+        this.ligado = false;
+    }
+
+    public void liga() {
+        if (!ligado) {
+            ligado = true;
+            System.out.println("Equipamento ligado.");
+        }
+    }
+
+    public void desliga() {
+        if (ligado) {
+            ligado = false;
+            System.out.println("Equipamento desligado.");
+        }
+    }
+
+    public void inverte() {
+        ligado = !ligado;
+        if (ligado) {
+            System.out.println("Equipamento ligado.");
+        } else {
+            System.out.println("Equipamento desligado.");
+        }
+    }
+
+    public boolean estaLigado() {
+        return ligado;
+    }
+}
+
